@@ -12,7 +12,7 @@ public class Chef extends Employee {
     public void getMenu() {
         Scanner userMenu = new Scanner(System.in);
         System.out.println("1. View order");
-        System.out.println("2 Finish orderReturn to Login menu");
+        System.out.println("2 Finish order");
         System.out.println("3. Return to Login menu");
         System.out.println("4. Quit");
 
