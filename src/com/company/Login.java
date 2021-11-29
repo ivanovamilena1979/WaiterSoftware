@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Login extends Employee {
     Scanner input = new Scanner( System.in );
 
-    Employee[] employees = {new Chef( "Bob", "Bailey", "myPassword" ),
+    Employee[] employees = {new Chef( "Bob", "Bobev", "myPassword" ),
             new Chef( "Sue", "Sarandon", "123Seven" ),
             new Waiter( "Jenny", "Strayhorn", "hardPassword" ),
             new Waiter( "Billy", "MeanGuy", "pifiaoanaei" )};
