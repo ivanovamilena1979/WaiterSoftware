@@ -22,11 +22,11 @@ public class Chef extends Employee {
             if (selection == 1) {
                 System.out.println("1");
             }
-            if (selection == 2) {
+            if (selection == 3) {
                 Login login=new Login();
                 login.login();
             }
-        } while(selection != 3);
+        } while(selection != 4);
 
         userMenu.close();
     }
