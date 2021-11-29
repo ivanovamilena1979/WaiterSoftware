@@ -20,7 +20,7 @@ public class Waiter extends Employee {
         public void getMenu() {
             Scanner waiterMenu = new Scanner(System.in);
             System.out.println("1. Start an order");
-            System.out.println("2. View menu");
+            System.out.println("2. View the menu");
             System.out.println("3. Edit menu");
             System.out.println("4. Return to Login menu");
             System.out.println("5. Quit");
