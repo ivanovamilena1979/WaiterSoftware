@@ -12,9 +12,9 @@ public class Chef extends Employee {
     public void getMenu() {
         Scanner userMenu = new Scanner(System.in);
         System.out.println("1. View order");
-        System.out.println("2 Finish order");
-        System.out.println("3. Return to Login menu");
-        System.out.println("4. Quit");
+        System.out.println("2 Return to Login menu");
+        System.out.println("2. Finish order");
+        System.out.println("3. Quit");
 
         do {
             selection = userMenu.nextInt();
@@ -22,11 +22,11 @@ public class Chef extends Employee {
             if (selection == 1) {
                 System.out.println("1");
             }
-            if (selection == 3) {
+            if (selection == 2) {
                 Login login=new Login();
                 login.login();
             }
-        } while(selection != 4);
+        } while(selection != 3);
 
         userMenu.close();
     }

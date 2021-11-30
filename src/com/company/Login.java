@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Login extends Employee {
     Scanner input = new Scanner( System.in );
 
-    Employee[] employees = {new Chef( "Bob", "Bailey", "myPassword" ),
+    Employee[] employees = {new Chef( "Bob", "Bobev", "myPassword" ),
             new Chef( "Sue", "Sarandon", "123Seven" ),
             new Waiter( "Jenny", "Strayhorn", "hardPassword" ),
-            new Waiter( "Били", "MeanGuy", "pifiaoanaei" )};
+            new Waiter( "Billy", "MeanGuy", "pifiaoanaei" )};
 public void login(){
         System.out.println("Enter firstName:");
     String firstName = input.nextLine();
