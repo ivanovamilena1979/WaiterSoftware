@@ -1,9 +1,6 @@
 package com.company;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 public class RestaurantMenu implements MenuInterface {
@@ -74,6 +71,34 @@ public class RestaurantMenu implements MenuInterface {
 
     @Override
     public void changeMenu() throws IOException {
+        Scanner scanner = new Scanner( System.in );
+        File inputFile = new File( "menu1.txt" );
+        File tempFile = new File( "myTempFile.txt" );
+
+        BufferedReader reader = new BufferedReader( new FileReader( inputFile ) );
+        BufferedWriter writer = new BufferedWriter( new FileWriter( tempFile ) );
+        System.out.println( "please copy and paste here the line of the menu you want to delete: " );
+
+
+        String lineToRemove = scanner.nextLine();
+        System.out.println( lineToRemove );
+        String currentLine;
+
+        while ((currentLine = reader.readLine()) != null) {
+            // trim newline when comparing with lineToRemove
+            String trimmedLine = currentLine.trim();
+            if (trimmedLine.equals( lineToRemove )) continue;
+            writer.write( currentLine + System.getProperty( "line.separator" ) );
+
+        }
+        reader.close();
+        writer.close();
+        inputFile.delete();
+
+        boolean successful = tempFile.renameTo( inputFile );
+        System.out.println( successful );
 
     }
+
+
 }
