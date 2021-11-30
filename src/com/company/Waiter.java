@@ -23,7 +23,7 @@ public class Waiter extends Employee {
             System.out.println("2. View the menu");
             System.out.println("3. Edit menu");
             System.out.println("4. Return to Login menu");
-            System.out.println("5. Quit");
+            System.out.println("5. Opit Quit");
 
             do {
                 selection = waiterMenu.nextInt();
