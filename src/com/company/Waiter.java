@@ -8,12 +8,12 @@ public class Waiter extends Employee {
 
         }
 
-        public Waiter(String firstName, String lastName) {
-            super(firstName, lastName);
+        public Waiter(String userName) {
+            super(userName);
         }
 
-        public Waiter(String firstName, String lastName, String password) {
-            super(firstName, lastName, password);
+        public Waiter(String userName, String password) {
+            super(userName, password);
         }
     int selection;
         @Override

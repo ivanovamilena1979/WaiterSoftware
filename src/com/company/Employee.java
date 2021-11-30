@@ -2,8 +2,7 @@ package com.company;
 
 public abstract class Employee {
 
-        private String firstName;
-        private String lastName;
+        public String userName;
         private String password;
 
         public Employee() {
@@ -11,30 +10,27 @@ public abstract class Employee {
         }
 
         // constructor that takes only the name of the Employee
-        public Employee(String firstName, String lastName) {
-            this(firstName, lastName, null);
+        public Employee(String userName) {
+            this(userName,  null);
         }
 
         // constructor that takes name and password
-        public Employee(String firstName, String lastName, String password) {
-            this.firstName = firstName;
-            this.lastName = lastName;
+        public Employee(String userName, String password) {
+            this.userName = userName;
             this.password = password;
         }
 
-        public String getFirstName() {
-            return firstName;
+        public String getUserName() {
+            return userName;
         }
 
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
+        public void setFirstName(String userName) {
+            this.userName = userName;
         }
-    public String getLastName() {
-        return lastName;
-    }
+
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.userName = lastName;
     }
     public String getPassword() {
         return password;

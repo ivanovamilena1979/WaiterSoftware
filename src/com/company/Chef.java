@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Chef extends Employee {
 
-    public Chef(String firstName, String lastName, String password) {
-        super(firstName, lastName, password);
+    public Chef(String userName, String password) {
+        super(userName, password);
     }
     int selection;
     @Override
