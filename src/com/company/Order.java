@@ -10,9 +10,7 @@ import java.util.Scanner;
 
 public class Order implements OrderInterface {
     private Table table;
-   // public OrderStatus orderStatus;
-
-
+   public OrderStatus orderStatus;
     private double totalPrice = calcTheTotalPriceOfOrder();
     private LocalDateTime currentTime = LocalDateTime.now();
 public RestaurantMenu menu;
@@ -26,13 +24,7 @@ public RestaurantMenu menu;
     public Table getTable() {
         return table;
     }
-//  //  public String getproductType() {
-//        return productType;
-//    }
-//
-//    public String getproductName() {
-//        return productName;
-//    }
+
     Collection<RestaurantMenu> getMenuItems() {
         return orderedFood;
     }
@@ -63,7 +55,7 @@ public RestaurantMenu menu;
             String  productName = input.next();
             System.out.println("Количество: ");
             int quantity = input.nextInt();
-            out.println("Номер маса : " + number + ", Време за поръчката: " + currentTime + ",  Име на продукт: " + productName + ", Количество : " + quantity + ", Цена на поръчката: " + totalPrice);
+            out.println("Номер маса : " + number + ", Дата и час на поръчката: " + currentTime + ",  Име на продукт: " + productName + ", Количество : " + quantity + ", Цена на поръчката: " + getTotalPrice());
             out.close();
         } catch (Exception e) {
             System.out.println("Грешни входни данни!");
