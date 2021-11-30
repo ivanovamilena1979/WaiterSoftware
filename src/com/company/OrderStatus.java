@@ -12,7 +12,6 @@ public enum OrderStatus {
         public String toString() {
             return "Приготвена";
         }
-
     },
 
     PAID {
