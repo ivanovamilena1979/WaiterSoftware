@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Login extends Employee {
@@ -8,9 +9,9 @@ public class Login extends Employee {
     Employee[] employees = {new Chef("Bob", "myPassword"),
             new Chef("Sue", "123Seven"),
             new Waiter("Jenny",  "hardPassword"),
-            new Waiter("Bil","pifiaoanaei")};
+            new Waiter("Bil","Jenny")};
 
-    public void login() {
+    public void login() throws IOException {
         System.out.println("Enter firstName:");
         String firstName = input.nextLine();
         System.out.println("Enter password:");

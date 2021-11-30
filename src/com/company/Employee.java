@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.IOException;
+
 public abstract class Employee {
 
         public String userName;
@@ -40,5 +42,5 @@ public abstract class Employee {
         this.password = password;
     }
 
-        public abstract void getMenu();
+        public abstract void getMenu() throws IOException;
 }
