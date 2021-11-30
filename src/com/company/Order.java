@@ -1,82 +1,134 @@
 package com.company;
 
-import java.time.LocalDate;
+
+import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Scanner;
 
 public class Order implements OrderInterface {
-    private int table;
-    private boolean done;
-    private LocalDate data;
-    private Collection<RestaurantMenu> menu;
+    private Table table;
+   // public OrderStatus orderStatus;
 
 
-    public Order(int table, List<RestaurantMenu> menu) {
+    private double totalPrice = calcTheTotalPriceOfOrder();
+    private LocalDateTime currentTime = LocalDateTime.now();
+public RestaurantMenu menu;
+    List<RestaurantMenu> orderedFood = new ArrayList<RestaurantMenu>();
 
-        data = LocalDate.now();
-        this.table = table;
-        this.menu = menu;
-        done = false;
+
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public int getTable() {
+    public Table getTable() {
         return table;
     }
-    
-
-
-    public LocalDate getDate() {
-        return data;
-    }
-    public boolean isDone() {
-        return done;
-    }
-    public void setDone(boolean done) {
-        this.done = done;
-    }
-   
-    public List<RestaurantMenu> getListOfItems() {
-        return new ArrayList<>(menu);
-    }
-    
+//  //  public String getproductType() {
+//        return productType;
+//    }
+//
+//    public String getproductName() {
+//        return productName;
+//    }
     Collection<RestaurantMenu> getMenuItems() {
-        return menu;
+        return orderedFood;
     }
+
+//    public Order(LocalDateTime currentTime, List<RestaurantMenu> orderedFood, OrderStatus orderStatus) {
+//
+//        this.currentTime = LocalDateTime.now();
+//
+//        this.orderedFood = orderedFood;
+//        this.orderStatus = orderStatus;
+//    }
 
 
     @Override
-    public void makeAOrder(Table tableOfOrder) {
+    public void makeOrder() throws IOException {
+//    checkIfTableIsFree();
+// table.setFree(false);
+
+        FileWriter fileWriter = new FileWriter("order1.txt", true);
+        PrintWriter out = new PrintWriter(fileWriter);
+        Scanner input = new Scanner(System.in);
+        System.out.println("Въведете номер на маса: ");
+        try {
+            int number  =input.nextInt();
+            System.out.println("Тип на продукта: ");
+           String  productType = input.next();
+            System.out.println("Наименование на продукта: ");
+            String  productName = input.next();
+            System.out.println("Количество: ");
+            int quantity = input.nextInt();
+            out.println("Номер маса : " + number + ", Време за поръчката: " + currentTime + ",  Име на продукт: " + productName + ", Количество : " + quantity + ", Цена на поръчката: " + totalPrice);
+            out.close();
+        } catch (Exception e) {
+            System.out.println("Грешни входни данни!");
+        }
 
     }
 
     @Override
     public void checkIfTableIsFree(Table tableOfOrder) throws IllegalArgumentException {
-
+        if (!tableOfOrder.isFree()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
-    public void addFoodToOrder(RestaurantMenu DishToAdd) {
-
+    public void addFoodToOrder(RestaurantMenu foodAdd) {
+        orderedFood.add(foodAdd);
     }
 
     @Override
-    public void removeFoodFromOrder(RestaurantMenu dishToRemove) {
-
+    public void removeFoodFromOrder(RestaurantMenu foodRemove) {
+        orderedFood.remove(foodRemove);
     }
 
     @Override
     public double calcTheTotalPriceOfOrder() {
-        return 0;
+        try {
+            return getMenuItems().stream().mapToDouble(order -> getMenuItems().size()).sum();
+        } catch (NullPointerException e) {
+            System.out.println("Няма поръчана храна!");
+        }
+        return -1;
     }
 
     @Override
-    public void changeOrderStatusToPayedAndFinish(Table tableOfOrdrer) {
-
+    public void changeOrderStatusToPayedAndFinish(Table tableOfOrder) {
+        try {
+            printOrderInfo();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Поръчката е платена! Благодарим, заповядайте отново!");
+        //orderStatus = OrderStatus.PAID;
+        tableOfOrder.setFree(true);
     }
 
     @Override
     public void changeOrderStatusToServed() {
 
+    }
+
+    @Override
+    public void printOrderInfo() throws FileNotFoundException {
+        FileReader ord = new FileReader( "order1.txt" );
+        Scanner fileReader = new Scanner( ord );
+
+        int lineNumber = 0;
+        while (fileReader.hasNext()) {
+            lineNumber++;
+            if (lineNumber % 2 != 0) {
+                System.out.println( fileReader.nextLine() );
+            } else {
+                System.out.println( fileReader.nextLine() );
+            }
+
+        }
     }
 }
