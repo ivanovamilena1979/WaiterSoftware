@@ -1,5 +1,6 @@
 package company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Chef extends Employee {
@@ -9,7 +10,7 @@ public class Chef extends Employee {
     }
     int selection;
     @Override
-    public void getMenu() {
+    public void getMenu() throws IOException {
         Scanner userMenu = new Scanner(System.in);
         System.out.println("1. View order");
         System.out.println("2 Return to Login menu");

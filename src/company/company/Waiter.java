@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Waiter extends Employee {
-    RestaurantMenu menu=new RestaurantMenu();
+   // RestaurantMenu menu=new RestaurantMenu();
         public Waiter() {
 
         }
@@ -34,7 +34,7 @@ public class Waiter extends Employee {
                 }
                 else if (selection == 2) {
                     System.out.println("Restaurant menu");
-                    menu.readMenu();
+                  //  menu.readMenu();
                     System.out.println();
                     System.out.println("1. Start an order");
                     System.out.println("2. View the menu");
@@ -45,7 +45,7 @@ public class Waiter extends Employee {
                 }
                 else if (selection == 3) {
                     System.out.println("Edit menu");
-                    menu.addRestaurantMenu();
+                   // menu.addRestaurantMenu();
                 }
                 else if (selection == 4) {
                     Login login=new Login();
