@@ -71,13 +71,56 @@ public class RestaurantMenu implements MenuInterface {
         }
         return menuList;
     }
+//-------------------------------------------------------------------------
+public void calculate(String fileName) throws FileNotFoundException {
+    System.out.print("Enter the ID of the product: ");
+    Scanner sc=new Scanner( System.in );
+    File file = new File( fileName );
+    Scanner s = new Scanner( file );
+    while (s.hasNextLine()) {
 
+        String line = s.nextLine();
+        String[] items = line.split( "\\|" );
+
+        int ID = Integer.parseInt( items[0] );
+        String productType = items[1];
+        String productName = items[2];
+        double productPrice = Double.parseDouble( items[3] );
+
+int IDSurched=sc.nextInt();
+        if (ID==IDSurched){
+            //int ID = Integer.parseInt( items[0] );
+
+            System.out.println("price"+Double.parseDouble( items[3] ));
+
+        }
+
+    }}
+
+
+//    ---------------------------------------------------------------------
     @Override
-    public void addRestaurantMenu(String fileName, String text, boolean append) throws IOException {
+    public void addRestaurantMenu(String fileName, boolean append) throws IOException {
+        ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
+        menusReadFromFile = readMenuFromFile( "menu.txt" );
+        System.out.println( menusReadFromFile );
+        Scanner scan = new Scanner( System.in );
+        System.out.println( "Enter the product type: " );
+        String productTypeToAdd = scan.nextLine();
+        System.out.println( "Enter the product name: " );
+        String productNameToAdd = scan.nextLine();
+        System.out.println( "Enter the product price: " );
+        double productPriceToAdd = scan.nextDouble();
+        RestaurantMenu[] menusArray = new RestaurantMenu[1];
+        RestaurantMenu menu1 = new RestaurantMenu( (menusReadFromFile.size() + 1), productTypeToAdd, productNameToAdd, productPriceToAdd );
+        menusArray[0] = menu1;
+
+        String outputText = menusArray[0].getID() + "|" + menusArray[0].getProductType() + "|" +
+                menusArray[0].getProductName() + "|" + menusArray[0].getProductPrice();
         File file = new File( "menu.txt" );
         FileWriter fw = new FileWriter( file, append );
         PrintWriter pw = new PrintWriter( fw );
-        pw.println( text );
+        pw.println( outputText );
         pw.close();
     }
 

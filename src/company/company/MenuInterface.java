@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface MenuInterface {
 
 
-    void addRestaurantMenu(String fileName, String text, boolean append) throws IOException;
+    void addRestaurantMenu(String fileName, boolean append) throws IOException;
 
     void changeMenu()throws IOException;
 }
