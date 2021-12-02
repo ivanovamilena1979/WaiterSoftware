@@ -25,3 +25,4 @@
 25|drinks|Wine|15.0
 26|drinks|Baileys|4.5
 27|drinks|Rom|3.0
+28|drinks|vodka|4.0

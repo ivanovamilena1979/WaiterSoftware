@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Order implements OrderInterface {
     private Table table;
-   public OrderStatus orderStatus;
+   public company.OrderStatus orderStatus;
     private double totalPrice = calcTheTotalPriceOfOrder();
     private LocalDateTime currentTime = LocalDateTime.now();
 public RestaurantMenu menu;
