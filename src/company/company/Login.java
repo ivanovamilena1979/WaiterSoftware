@@ -1,16 +1,17 @@
 package company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Login extends Employee {
     Scanner input = new Scanner(System.in);
 
-    Employee[] employees = {new Chef("Bob", "myPassword"),
-            new Chef("Sue", "123Seven"),
-            new Waiter("Jenny",  "hardPassword"),
-            new Waiter("Bil","pifiaoanaei")};
+    Employee[] employees = {new Chef("Bobi", "myPassword"),
+            new Chef("Pena", "123Seven"),
+            new Waiter("Ani",  "hardPassword"),
+            new Waiter("Bil","987Bil")};
 
-    public void login() {
+    public void login() throws IOException {
         System.out.println("Enter firstName:");
         String firstName = input.nextLine();
         System.out.println("Enter password:");
