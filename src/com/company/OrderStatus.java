@@ -1,4 +1,4 @@
-package company;
+package com.company;
 
 public enum OrderStatus {
     COOKING {

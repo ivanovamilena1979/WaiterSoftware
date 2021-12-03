@@ -1,4 +1,4 @@
-package company;
+package com.company;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ public class Login extends Employee {
     Scanner input = new Scanner(System.in);
 
     Employee[] employees = {new Chef("Bobi", "bobi123"),
-            new Chef("Pena", "pena123"),
+            new Chef("Pena", "123"),
             new Waiter("Ani", "ani123"),
             new Waiter("Bil", "bil123")};
 
@@ -20,7 +20,7 @@ public class Login extends Employee {
         for (
                 int i = 0;
                 i < employees.length; i++) {
-            if (employees[i].getUserName().equals(userName) &&
+            if (employees[i].getUserName().equals(firstName) &&
                     employees[i].getPassword().equals(password)) {
 
                 employees[i].getMenu();

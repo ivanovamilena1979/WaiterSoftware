@@ -1,10 +1,10 @@
-package company;
+package com.company;
 
 import java.io.IOException;
 
 public abstract class Employee {
 
-        public String userName;
+        public String firstName;
         private String password;
 
         public Employee() {
@@ -18,21 +18,21 @@ public abstract class Employee {
 
         // constructor that takes name and password
         public Employee(String userName, String password) {
-            this.userName = userName;
+            this.firstName = userName;
             this.password = password;
         }
 
         public String getUserName() {
-            return userName;
+            return firstName;
         }
 
         public void setFirstName(String userName) {
-            this.userName = userName;
+            this.firstName = userName;
         }
 
 
     public void setLastName(String lastName) {
-        this.userName = lastName;
+        this.firstName = lastName;
     }
     public String getPassword() {
         return password;

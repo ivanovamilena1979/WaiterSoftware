@@ -1,7 +1,6 @@
-package company;
+package com.company;
 
 import java.io.IOException;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Waiter extends Employee {

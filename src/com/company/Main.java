@@ -1,10 +1,6 @@
-package company;
+package com.company;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import static company.Order.readOrderFromFile;
-import static company.RestaurantMenu.readMenuFromFile;
 
 public class Main {
 
