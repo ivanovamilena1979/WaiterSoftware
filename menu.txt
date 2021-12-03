@@ -19,5 +19,6 @@
 19|drinks|Coffee|1.8
 20|drinks|Tea|1.5
 21|drinks|juice|2.0
-22|drinks|Coke|1.8
-23|drinks|Beer|2.0
+22|drinks|Beer|2.024|drinks|Fanta|3.6
+23|dessert|Orange|2.0
+24|drink|wine|5.0
