@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Order<productReadFromFile> implements OrderInterface {
+public class Order extends RestaurantMenu implements OrderInterface {
     private Table table;
     public OrderStatus orderStatus;
     private double totalPrice;
@@ -16,6 +16,7 @@ public class Order<productReadFromFile> implements OrderInterface {
     ArrayList<RestaurantMenu> menu= new ArrayList<>();
 
     public Order(int table, LocalDateTime currentTime, ArrayList<RestaurantMenu> prod, double totalPrice, OrderStatus ordered) {
+        super();
         this.table = table1;
         this.currentTime = currentTime;
        this.menu = prod;
@@ -23,7 +24,8 @@ public class Order<productReadFromFile> implements OrderInterface {
         this.orderStatus = OrderStatus.ORDERED;
         }
         public  Order (){
-        this.totalPrice=20;
+            super();
+            this.totalPrice=20;
         }
 
 
@@ -88,6 +90,7 @@ public class Order<productReadFromFile> implements OrderInterface {
     @Override
     public void makeOrder(String fileName, boolean append) throws IOException {
         ArrayList<Order> orderReadFromFile = new ArrayList<Order>();
+        ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
         orderReadFromFile = readOrderFromFile( "order1.txt" );
         System.out.println( orderReadFromFile );
         Scanner scan = new Scanner( System.in );
@@ -127,7 +130,7 @@ public class Order<productReadFromFile> implements OrderInterface {
         Order order1 = new Order( table1.getNumber(), currentTime, menu, totalPrice, orderStatus );
         orderArray[0] = order1;
 
-        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].menu + "|" + orderArray[0].totalPrice + orderArray[0].orderStatus;
+        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" +orderArray[0].getProductName() + "|" + orderArray[0].totalPrice + orderArray[0].orderStatus;
         File file = new File( "order.txt" );
         FileWriter fs = new FileWriter( file, append );
         PrintWriter ps = new PrintWriter( fs );

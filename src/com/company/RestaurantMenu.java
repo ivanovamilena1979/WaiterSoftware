@@ -20,6 +20,11 @@ public class RestaurantMenu implements MenuInterface {
     public RestaurantMenu(String productName){
              this.productName=productName;
     }
+
+    public RestaurantMenu() {
+
+    }
+
     public int getID(){
         return ID;
     }
