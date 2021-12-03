@@ -10,18 +10,20 @@ public class Login extends Employee {
             new Chef("Pena", "pena123"),
             new Waiter("Ani", "ani123"),
             new Waiter("Bil", "bil123")};
-
     public void login() throws IOException {
-        System.out.println("Enter firstName:");
+        System.out.println("Enter userName:");
         String firstName = input.nextLine();
+
         System.out.println("Enter password:");
         String password = input.nextLine();
         int count = 0;
-        for (
+        for(
                 int i = 0;
-                i < employees.length; i++) {
-            if (employees[i].getUserName().equals(userName) &&
-                    employees[i].getPassword().equals(password)) {
+                i<employees.length;i++)
+
+        {
+            if (employees[i].getUserName().equals( userName ) &&
+                    employees[i].getPassword().equals( password )) {
 
                 employees[i].getMenu();
                 count++;
@@ -29,10 +31,10 @@ public class Login extends Employee {
                 break;
             }
         }
-        if (count == 0) {
-            System.out.println("Wrong input!Please check and try again!");
-        }
-    }
+        if(count ==0)
+
+        {
+            System.out.println( "Wrong input!Please check and try again!" );}}
 
 
     @Override
