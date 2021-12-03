@@ -5,7 +5,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        RestaurantMenu[] menusArray = new RestaurantMenu[1];
+//        RestaurantMenu[] menusArray = new RestaurantMenu[1];
         Login login = new Login();
         login.login();
 
