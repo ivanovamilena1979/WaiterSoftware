@@ -45,7 +45,7 @@ public class Waiter extends Employee {
             if (selection == 2) {
                 System.out.println("Edit menu");
                 RestaurantMenu menu = new RestaurantMenu("kola");
-                menu.changeMenu();
+                menu.addRestaurantMenu("menu.txt", true);
             }
             if (selection == 3) {
                 Order order = new Order();
