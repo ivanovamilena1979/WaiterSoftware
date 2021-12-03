@@ -6,7 +6,7 @@ import java.io.IOException;
 public interface OrderInterface {
     void makeOrder(String fileName, boolean append)throws IOException ;
     void checkIfTableIsFree(Table tableOfOrder) throws IllegalArgumentException;
-    void addProductToOrder() throws IOException;
+    void delProductToOrder() throws IOException;
 void changeOrderStatusToCooking();
     void changeOrderStatusToPrepared();
     void changeOrderStatusToPayedAndFinish(Table tableOfOrdrer);

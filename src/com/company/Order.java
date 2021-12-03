@@ -114,12 +114,14 @@ public class Order<productReadFromFile> implements OrderInterface {
                     productPrice = Double.parseDouble(items[3]);
                     productName = items[2];
                 }
+                break;
             }
 
             System.out.println("How many: ");
             quantity = scan.nextInt();
             System.out.print("Would you like to order again? Y/N / y/n: ");
             decision = s.next().charAt(0);
+
         } while (decision != 'n' && decision != 'N');
         Order[] orderArray = new Order[1];
         Order order1 = new Order(table1.getNumber(), currentTime, menu , totalPrice,orderStatus);
@@ -143,14 +145,14 @@ public class Order<productReadFromFile> implements OrderInterface {
     }
 
     @Override
-    public void addProductToOrder() throws IOException {
+    public void delProductToOrder() throws IOException {
         Scanner scanner = new Scanner( System.in );
         File inputFile = new File( "order.txt" );
         File tempFile = new File( "myTempOrder.txt" );
 
         BufferedReader reader = new BufferedReader( new FileReader( "order1.txt" ) );
         BufferedWriter writer = new BufferedWriter( new FileWriter( "tempFileOrder.txt" ) );
-        System.out.println( "please copy and paste here the line of the menu you want to delete: " );
+        System.out.println( "please enter here order you want to delete: " );
 
 
         String lineToRemove = scanner.nextLine();
