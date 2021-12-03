@@ -13,7 +13,7 @@ public class Chef extends Employee {
     public void getMenu() throws IOException {
         Scanner userMenu = new Scanner(System.in);
         System.out.println("1. View order");
-        System.out.println("2 Change status order");
+        System.out.println("2. Change status order");
         System.out.println("3. Return to Login menu");
         System.out.println("4. Quit");
 

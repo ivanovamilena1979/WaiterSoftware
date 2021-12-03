@@ -1,7 +1,10 @@
 package com.company;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static com.company.RestaurantMenu.readMenuFromFile;
 
 public class Waiter extends Employee {
     // RestaurantMenu menu=new RestaurantMenu();
@@ -33,8 +36,9 @@ public class Waiter extends Employee {
             selection = waiterMenu.nextInt();
 
             if (selection == 1) {
-                RestaurantMenu menu = new RestaurantMenu("kola");
-                menu.readMenuFromFile("menu.txt");
+                ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
+                menusReadFromFile = readMenuFromFile("menu.txt");
+                System.out.println(menusReadFromFile);
                 Order order = new Order();
                 order.makeOrder("order.txt", true);
             }
@@ -44,9 +48,9 @@ public class Waiter extends Employee {
                 menu.changeMenu();
             }
             if (selection == 3) {
-               Order order = new Order();
-               order.printOrderInfo();
-               order.addProductToOrder();
+                Order order = new Order();
+                order.printOrderInfo();
+                order.addProductToOrder();
             }
             if (selection == 4) {
                 Login login = new Login();
