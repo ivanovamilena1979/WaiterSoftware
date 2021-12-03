@@ -143,7 +143,7 @@ public class Order<productReadFromFile> implements OrderInterface {
     }
 
     @Override
-    public void addFoodToOrder() throws IOException {
+    public void addProductToOrder() throws IOException {
         Scanner scanner = new Scanner( System.in );
         File inputFile = new File( "order.txt" );
         File tempFile = new File( "myTempOrder.txt" );

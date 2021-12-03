@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class Login extends Employee {
     Scanner input = new Scanner(System.in);
 
-    Employee[] employees = {new Chef("Bobi", "myPassword"),
-            new Chef("Pena", "123Seven"),
-            new Waiter("Ani",  "hardPassword"),
-            new Waiter("Bil","987Bil")};
+    Employee[] employees = {new Chef("Bobi", "bobi123"),
+            new Chef("Pena", "pena123"),
+            new Waiter("Ani",  "ani123"),
+            new Waiter("Bil","bil123")};
 
     public void login() throws IOException {
         System.out.println("Enter firstName:");
