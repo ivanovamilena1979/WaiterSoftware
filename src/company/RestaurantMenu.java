@@ -16,6 +16,9 @@ public class RestaurantMenu implements MenuInterface {
         this.productName=productName;
         this.productPrice=productPrice;
     }
+    public RestaurantMenu(String productName){
+             this.productName=productName;
+    }
     public int getID(){
         return ID;
     }
@@ -71,34 +74,7 @@ public class RestaurantMenu implements MenuInterface {
         }
         return menuList;
     }
-//-------------------------------------------------------------------------
-public void calculate(String fileName) throws FileNotFoundException {
-    System.out.print("Enter the ID of the product: ");
-    Scanner sc=new Scanner( System.in );
-    File file = new File( fileName );
-    Scanner s = new Scanner( file );
-    while (s.hasNextLine()) {
 
-        String line = s.nextLine();
-        String[] items = line.split( "\\|" );
-
-        int ID = Integer.parseInt( items[0] );
-        String productType = items[1];
-        String productName = items[2];
-        double productPrice = Double.parseDouble( items[3] );
-
-int IDSurched=sc.nextInt();
-        if (ID==IDSurched){
-            //int ID = Integer.parseInt( items[0] );
-
-            System.out.println("price"+Double.parseDouble( items[3] ));
-
-        }
-
-    }}
-
-
-//    ---------------------------------------------------------------------
     @Override
     public void addRestaurantMenu(String fileName, boolean append) throws IOException {
         ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();

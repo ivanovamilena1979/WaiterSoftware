@@ -9,7 +9,9 @@ public class Table {
         this.number = number;
         this.isFree = isFree;
     }
-
+    public Table() {
+        this.number = 1;
+    }
     public int getNumber() {
         return number;
     }
