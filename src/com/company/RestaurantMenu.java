@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,6 +20,10 @@ public class RestaurantMenu implements MenuInterface {
     public RestaurantMenu(String productName){
              this.productName=productName;
     }
+
+    public RestaurantMenu(int table, String product, int quantity, double totalPrice, OrderStatus status, LocalDateTime currentTime) {
+    }
+
     public int getID(){
         return ID;
     }

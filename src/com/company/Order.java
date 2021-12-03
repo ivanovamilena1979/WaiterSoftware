@@ -6,28 +6,34 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Order extends RestaurantMenu implements OrderInterface {
+public class Order  implements OrderInterface {
     private Table table;
     public OrderStatus orderStatus;
     private double totalPrice;
     public LocalDateTime currentTime = LocalDateTime.now();
     public int quantity;
+    ArrayList<RestaurantMenu> productNme = readProductFromMenu("menu");
 
 //    Table table1 = new Table();
 
-public Order (){
 
-}
 
-    public Order(int table, String product, int quantity, double totalPrice, OrderStatus status, LocalDateTime currentTime) {
-        super();
+    public Order(int table, String product, int quantity, double totalPrice, OrderStatus status, LocalDateTime currentTime) throws FileNotFoundException {
+
         this.table = getTable();
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.orderStatus = OrderStatus.ORDERED;
     }
 
-    public Order(int table, LocalDateTime currentTime, ArrayList<RestaurantMenu> readProductFromMenu, int quantity, double totalPrice, OrderStatus ordered) {
+    public Order(int table, ArrayList<RestaurantMenu> readProductFromMenu, int quantity, double totalPrice, OrderStatus ordered,LocalDateTime currentTime) throws FileNotFoundException {
+    }
+
+    public Order(int table, LocalDateTime currentTime, ArrayList<RestaurantMenu> readProductFromMenu, int quantity, double totalPrice, OrderStatus ordered) throws FileNotFoundException {
+    }
+
+    public Order() throws FileNotFoundException {
+
     }
 
 
@@ -134,7 +140,7 @@ public Order (){
         Order order1 = new Order(table.getNumber(), String.valueOf(readProductFromMenu("menu.txt")), quantity, totalPrice, orderStatus,currentTime);
         orderArray[0] = order1;
 
-        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].getProductName() + "|" + orderArray[0].totalPrice + orderArray[0].orderStatus;
+        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].readProductFromMenu("menu") + "|" + orderArray[0].totalPrice + orderArray[0].orderStatus;
         File file = new File("order.txt");
         FileWriter fs = new FileWriter(file, append);
         PrintWriter ps = new PrintWriter(fs);
