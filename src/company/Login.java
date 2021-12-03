@@ -8,8 +8,8 @@ public class Login extends Employee {
 
     Employee[] employees = {new Chef("Bobi", "bobi123"),
             new Chef("Pena", "pena123"),
-            new Waiter("Ani",  "ani123"),
-            new Waiter("Bil","bil123")};
+            new Waiter("Ani", "ani123"),
+            new Waiter("Bil", "bil123")};
 
     public void login() throws IOException {
         System.out.println("Enter firstName:");
