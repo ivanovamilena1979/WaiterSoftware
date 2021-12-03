@@ -39,10 +39,14 @@ public class Waiter extends Employee {
                 ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
                 menusReadFromFile = readMenuFromFile("menu.txt");
                 System.out.println(menusReadFromFile);
+                System.out.println("Insert the Order: ");
                 Order order = new Order();
                 order.makeOrder("order.txt", true);
             }
             if (selection == 2) {
+                ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
+                menusReadFromFile = readMenuFromFile("menu.txt");
+                System.out.println(menusReadFromFile);
                 System.out.println("Edit menu");
                 RestaurantMenu menu = new RestaurantMenu("kola");
                 menu.addRestaurantMenu("menu.txt", true);
