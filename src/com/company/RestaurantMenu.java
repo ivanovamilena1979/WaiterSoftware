@@ -10,7 +10,7 @@ public class RestaurantMenu implements MenuInterface {
     private String productName;
     private double productPrice;
 
-    public RestaurantMenu(int ID,String productType,String productName,double productPrice){
+    public RestaurantMenu(){
         this.ID=ID;
         this.productType=productType;
         this.productName=productName;
@@ -68,7 +68,7 @@ public class RestaurantMenu implements MenuInterface {
             String productName = items[2];
             double productPrice = Double.parseDouble( items[3] );
 
-            RestaurantMenu newMenu = new RestaurantMenu( ID, productType, productName, productPrice );
+            RestaurantMenu newMenu = new RestaurantMenu();
             menuList.add( newMenu );
 
         }
@@ -88,7 +88,7 @@ public class RestaurantMenu implements MenuInterface {
         System.out.println( "Enter the product price: " );
         double productPriceToAdd = scan.nextDouble();
         RestaurantMenu[] menusArray = new RestaurantMenu[1];
-        RestaurantMenu menu1 = new RestaurantMenu( (menusReadFromFile.size() + 1), productTypeToAdd, productNameToAdd, productPriceToAdd );
+        RestaurantMenu menu1 = new RestaurantMenu();
         menusArray[0] = menu1;
 
         String outputText = menusArray[0].getID() + "|" + menusArray[0].getProductType() + "|" +

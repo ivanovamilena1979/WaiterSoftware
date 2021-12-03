@@ -6,25 +6,28 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Order<productReadFromFile> implements OrderInterface {
+public class Order extends RestaurantMenu implements OrderInterface {
     private Table table;
     public OrderStatus orderStatus;
     private double totalPrice;
     public LocalDateTime currentTime = LocalDateTime.now();
     public int quantity;
-    Table table1 = new Table();
-    ArrayList<RestaurantMenu> menu = new ArrayList<>();
 
-    public Order(int table, LocalDateTime currentTime, ArrayList<RestaurantMenu> prod, double totalPrice, OrderStatus ordered) {
-        this.table = table1;
-        this.currentTime = currentTime;
-        this.menu = prod;
+//    Table table1 = new Table();
+
+public Order (){
+
+}
+
+    public Order(int table, String product, int quantity, double totalPrice, OrderStatus status, LocalDateTime currentTime) {
+        super();
+        this.table = getTable();
+        this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.orderStatus = OrderStatus.ORDERED;
     }
 
-    public Order() {
-        this.totalPrice = 20;
+    public Order(int table, LocalDateTime currentTime, ArrayList<RestaurantMenu> readProductFromMenu, int quantity, double totalPrice, OrderStatus ordered) {
     }
 
 
@@ -59,10 +62,11 @@ public class Order<productReadFromFile> implements OrderInterface {
             int table = Integer.parseInt(items[0]);
             LocalDateTime currentTime = LocalDateTime.parse(items[1]);
             String readProductFromMenu = items[2];
-            double totalPrice = Double.parseDouble(items[3]);
-            OrderStatus orderStatus = OrderStatus.valueOf(items[4]);
+            int quantity = Integer.parseInt(items[3]);
+            double totalPrice = Double.parseDouble(items[4]);
+            OrderStatus orderStatus = OrderStatus.valueOf(items[5]);
 
-            Order newOrder = new Order(table, currentTime, readProductFromMenu("menu.txt"), totalPrice, OrderStatus.ORDERED);
+            Order newOrder = new Order(table, currentTime, readProductFromMenu("menu.txt"), quantity,totalPrice, OrderStatus.ORDERED);
             orderList.add(newOrder);
 
         }
@@ -86,6 +90,7 @@ public class Order<productReadFromFile> implements OrderInterface {
         }
         return prodList;
     }
+
 
     @Override
     public void createOrder(String fileName, boolean append) throws IOException {
@@ -126,10 +131,10 @@ public class Order<productReadFromFile> implements OrderInterface {
 
         } while (decision != 'n' && decision != 'N');
         Order[] orderArray = new Order[1];
-        Order order1 = new Order(table1.getNumber(), currentTime, menu, totalPrice, orderStatus);
+        Order order1 = new Order(table.getNumber(), String.valueOf(readProductFromMenu("menu.txt")), quantity, totalPrice, orderStatus,currentTime);
         orderArray[0] = order1;
 
-        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].menu + "|" + orderArray[0].totalPrice + orderArray[0].orderStatus;
+        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].getProductName() + "|" + orderArray[0].totalPrice + orderArray[0].orderStatus;
         File file = new File("order.txt");
         FileWriter fs = new FileWriter(file, append);
         PrintWriter ps = new PrintWriter(fs);
