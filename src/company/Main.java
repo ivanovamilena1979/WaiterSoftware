@@ -3,8 +3,8 @@ package company;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.company.Order.readOrderFromFile;
-import static com.company.RestaurantMenu.readMenuFromFile;
+import static company.Order.readOrderFromFile;
+import static company.RestaurantMenu.readMenuFromFile;
 
 public class Main {
 

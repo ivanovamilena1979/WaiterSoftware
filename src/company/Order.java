@@ -173,7 +173,15 @@ public class Order<productReadFromFile> implements OrderInterface {
 
     }
 
+    @Override
+    public void changeOrderStatusToCooking() {
 
+    }
+
+    @Override
+    public void changeOrderStatusToPrepared() {
+
+    }
 
 
     @Override
