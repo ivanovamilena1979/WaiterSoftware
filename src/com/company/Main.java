@@ -5,9 +5,11 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        Order order1=new Order( );
+        order1.printOrderInfo();
 //        RestaurantMenu[] menusArray = new RestaurantMenu[1];
-        Login login = new Login();
-        login.login();
+//        Login login = new Login();
+//        login.login();
 
 //        ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
 //        menusReadFromFile = readMenuFromFile( "menu.txt" );

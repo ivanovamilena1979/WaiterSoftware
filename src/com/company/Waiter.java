@@ -40,7 +40,7 @@ public class Waiter extends Employee {
                 System.out.println(menusReadFromFile);
                 System.out.println("Insert the Order: ");
                 Order order = new Order();
-                order.makeOrder("order.txt", true);
+                order.createOrder("order.txt", true);
             }
             if (selection == 2) {
                 ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();

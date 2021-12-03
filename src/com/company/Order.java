@@ -13,18 +13,19 @@ public class Order<productReadFromFile> implements OrderInterface {
     public LocalDateTime currentTime = LocalDateTime.now();
     public int quantity;
     Table table1 = new Table();
-    ArrayList<RestaurantMenu> menu= new ArrayList<>();
+    ArrayList<RestaurantMenu> menu = new ArrayList<>();
 
     public Order(int table, LocalDateTime currentTime, ArrayList<RestaurantMenu> prod, double totalPrice, OrderStatus ordered) {
         this.table = table1;
         this.currentTime = currentTime;
-       this.menu = prod;
-       this.totalPrice = totalPrice;
+        this.menu = prod;
+        this.totalPrice = totalPrice;
         this.orderStatus = OrderStatus.ORDERED;
-        }
-        public  Order (){
-        this.totalPrice=20;
-        }
+    }
+
+    public Order() {
+        this.totalPrice = 20;
+    }
 
 
     public double getTotalPrice() {
@@ -57,7 +58,7 @@ public class Order<productReadFromFile> implements OrderInterface {
 
             int table = Integer.parseInt(items[0]);
             LocalDateTime currentTime = LocalDateTime.parse(items[1]);
-            String readProductFromMenu= items[2];
+            String readProductFromMenu = items[2];
             double totalPrice = Double.parseDouble(items[3]);
             OrderStatus orderStatus = OrderStatus.valueOf(items[4]);
 
@@ -67,26 +68,27 @@ public class Order<productReadFromFile> implements OrderInterface {
         }
         return orderList;
     }
+
     public static ArrayList<RestaurantMenu> readProductFromMenu(String fileName) throws FileNotFoundException {
-        File file = new File( fileName );
-        Scanner s = new Scanner( file );
+        File file = new File(fileName);
+        Scanner s = new Scanner(file);
         ArrayList<RestaurantMenu> prodList = new ArrayList<RestaurantMenu>();
         while (s.hasNextLine()) {
 
             String line = s.nextLine();
-            String[] items = line.split( "\\|" );
+            String[] items = line.split("\\|");
 
             String productName = items[2];
 
-            RestaurantMenu prod = new RestaurantMenu(  productName);
-            prodList.add( prod );
+            RestaurantMenu prod = new RestaurantMenu(productName);
+            prodList.add(prod);
 
         }
         return prodList;
     }
 
     @Override
-    public void makeOrder(String fileName, boolean append) throws IOException {
+    public void createOrder(String fileName, boolean append) throws IOException {
         ArrayList<Order> orderReadFromFile = new ArrayList<Order>();
         orderReadFromFile = readOrderFromFile("order1.txt");
         System.out.println(orderReadFromFile);
@@ -124,17 +126,16 @@ public class Order<productReadFromFile> implements OrderInterface {
 
         } while (decision != 'n' && decision != 'N');
         Order[] orderArray = new Order[1];
-        Order order1 = new Order(table1.getNumber(), currentTime, menu , totalPrice,orderStatus);
+        Order order1 = new Order(table1.getNumber(), currentTime, menu, totalPrice, orderStatus);
         orderArray[0] = order1;
 
-        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].menu+ "|" + orderArray[0].totalPrice+orderArray[0].orderStatus;
+        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].menu + "|" + orderArray[0].totalPrice + orderArray[0].orderStatus;
         File file = new File("order.txt");
-        FileWriter fs = new FileWriter(file, append );
+        FileWriter fs = new FileWriter(file, append);
         PrintWriter ps = new PrintWriter(fs);
         ps.println(outputText);
         ps.close();
     }
-
 
 
     @Override
@@ -146,45 +147,44 @@ public class Order<productReadFromFile> implements OrderInterface {
 
     @Override
     public void delProductToOrder() throws IOException {
-        Scanner scanner = new Scanner( System.in );
-        File inputFile = new File( "order.txt" );
-        File tempFile = new File( "myTempOrder.txt" );
+        Scanner scanner = new Scanner(System.in);
+        File inputFile = new File("order.txt");
+        File tempFile = new File("myTempOrder.txt");
 
-        BufferedReader reader = new BufferedReader( new FileReader( "order1.txt" ) );
-        BufferedWriter writer = new BufferedWriter( new FileWriter( "tempFileOrder.txt" ) );
-        System.out.println( "please enter here order you want to delete: " );
+        BufferedReader reader = new BufferedReader(new FileReader("order1.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("tempFileOrder.txt"));
+        System.out.println("please enter here product from order for delete: ");
 
 
         String lineToRemove = scanner.nextLine();
-        System.out.println( lineToRemove );
+        System.out.println(lineToRemove);
         String currentLine;
 
         while ((currentLine = reader.readLine()) != null) {
             // trim newline when comparing with lineToRemove
             String trimmedLine = currentLine.trim();
-            if (trimmedLine.equals( lineToRemove )) continue;
-            writer.write( currentLine + System.getProperty( "line.separator" ) );
+            if (trimmedLine.equals(lineToRemove)) continue;
+            writer.write(currentLine + System.getProperty("line.separator"));
 
         }
         reader.close();
         writer.close();
         inputFile.delete();
 
-        boolean successful = tempFile.renameTo( inputFile );
-        System.out.println( successful );
+        boolean successful = tempFile.renameTo(inputFile);
+        System.out.println(successful);
 
     }
 
     @Override
-    public void changeOrderStatusToCooking() {
-
+    public void  changeOrderStatusToCooking() {
+        System.out.println(OrderStatus.COOKING);
     }
 
     @Override
     public void changeOrderStatusToPrepared() {
-
+        System.out.println(OrderStatus.PREPARED);
     }
-
 
     @Override
     public void changeOrderStatusToPayedAndFinish(Table tableOfOrder) {
@@ -194,13 +194,13 @@ public class Order<productReadFromFile> implements OrderInterface {
             e.printStackTrace();
         }
         System.out.println("Поръчката е платена! Благодарим, заповядайте отново!");
-        //orderStatus = OrderStatus.PAID;
+        orderStatus = OrderStatus.PAID;
         tableOfOrder.setFree(true);
     }
 
     @Override
     public void changeOrderStatusToServed() {
-
+        System.out.println(OrderStatus.SERVED);
     }
 
     @Override
