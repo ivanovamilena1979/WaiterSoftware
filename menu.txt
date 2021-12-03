@@ -22,3 +22,5 @@
 22|drinks|Beer|2.024|drinks|Fanta|3.6
 23|dessert|Orange|2.0
 24|drink|wine|5.0
+25|drink|water|1.0
+26|drink|Rom|3.0

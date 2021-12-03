@@ -88,54 +88,54 @@ public class Order<productReadFromFile> implements OrderInterface {
     @Override
     public void makeOrder(String fileName, boolean append) throws IOException {
         ArrayList<Order> orderReadFromFile = new ArrayList<Order>();
-        orderReadFromFile = readOrderFromFile("order1.txt");
-        System.out.println(orderReadFromFile);
-        Scanner scan = new Scanner(System.in);
+        orderReadFromFile = readOrderFromFile( "order1.txt" );
+        System.out.println( orderReadFromFile );
+        Scanner scan = new Scanner( System.in );
         char decision;
         do {
-            System.out.println("Enter the product ID: ");
-            Scanner sc = new Scanner(System.in);
-            File file = new File("menu.txt");
-            Scanner s = new Scanner(file);
+            System.out.println( "Enter the product ID: " );
+            Scanner sc = new Scanner( System.in );
+            File file = new File( "menu.txt" );
+            Scanner s = new Scanner( file );
             while (s.hasNext()) {
 
                 String line = s.nextLine();
-                String[] items = line.split("\\|");
+                String[] items = line.split( "\\|" );
 
-                int ID = Integer.parseInt(items[0]);
+                int ID = Integer.parseInt( items[0] );
                 String productType = items[1];
                 String productName = items[2];
-                double productPrice = Double.parseDouble(items[3]);
+                double productPrice = Double.parseDouble( items[3] );
 
                 int IDSurched = sc.nextInt();
                 if (ID == IDSurched) {
                     //int ID = Integer.parseInt( items[0] );
 
-                    productPrice = Double.parseDouble(items[3]);
+                    productPrice = Double.parseDouble( items[3] );
                     productName = items[2];
                 }
                 break;
             }
 
-            System.out.println("How many: ");
+            System.out.println( "How many: " );
             quantity = scan.nextInt();
-            System.out.print("Would you like to order again? Y/N / y/n: ");
-            decision = s.next().charAt(0);
-
+            System.out.print( "Would you like to order again? Y/N / y/n: " );
+            decision = scan.next().charAt( 0 );
         } while (decision != 'n' && decision != 'N');
+
         Order[] orderArray = new Order[1];
-        Order order1 = new Order(table1.getNumber(), currentTime, menu , totalPrice,orderStatus);
+        Order order1 = new Order( table1.getNumber(), currentTime, menu, totalPrice, orderStatus );
         orderArray[0] = order1;
 
-        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].menu+ "|" + orderArray[0].totalPrice+orderArray[0].orderStatus;
-        File file = new File("order.txt");
-        FileWriter fs = new FileWriter(file, append );
-        PrintWriter ps = new PrintWriter(fs);
-        ps.println(outputText);
+        String outputText = orderArray[0].getTable() + "|" + orderArray[0].currentTime + "|" + orderArray[0].menu + "|" + orderArray[0].totalPrice + orderArray[0].orderStatus;
+        File file = new File( "order.txt" );
+        FileWriter fs = new FileWriter( file, append );
+        PrintWriter ps = new PrintWriter( fs );
+        ps.println( outputText );
+        fs.close();
         ps.close();
+        //makeOrder( "order1.txt", true);
     }
-
-
 
     @Override
     public void checkIfTableIsFree(Table tableOfOrder) throws IllegalArgumentException {
