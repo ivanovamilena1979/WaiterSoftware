@@ -62,7 +62,7 @@ public class Waiter extends Employee {
 
                 System.out.println("Insert the Order: ");
                 Order order = new Order();
-                order.createOrder("order.txt", true);
+                order.makeOrder();
             }
             if (selection == 3) {
                 Order order = new Order();

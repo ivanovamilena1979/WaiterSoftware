@@ -1,0 +1,1 @@
+Table number : 2, Time of order: 2021-12-04T12:05:50.614903700,  Name of product: Kola, Quantity : 2, Total Price:2.0, Statusnull

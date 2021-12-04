@@ -235,4 +235,24 @@ public class Order implements OrderInterface {
 
         }
     }
+    public void makeOrder() throws IOException {
+
+
+        FileWriter fileWriter = new FileWriter("order1.txt", true);
+        PrintWriter out = new PrintWriter(fileWriter);
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insert table number: ");
+        try {
+            int number  =input.nextInt();
+            System.out.println("Name of product: ");
+            String  productName = input.next();
+            System.out.println("How many: ");
+            int quantity = input.nextInt();
+            out.println("Table number : " + number + ", Time of order: " + currentTime + ",  Name of product: " + productName + ", Quantity : " + quantity + ", Total Price: " + getTotalPrice()+ ", Status"+ orderStatus);
+            out.close();
+        } catch (Exception e) {
+            System.out.println("Wrong input! ");
+        }
+
+    }
 }
