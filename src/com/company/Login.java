@@ -37,27 +37,27 @@ public class Login extends Employee {
 
     @Override
     public void getMenu() {
-        int selection;
-        Scanner WelcomeMenu = new Scanner(System.in);
-        System.out.println("1. Welcome");
-        System.out.println("2. Dyra byra");
-        System.out.println("3. UFF");
-        System.out.println("4. Pfu");
+//        int selection;
+//        Scanner WelcomeMenu = new Scanner(System.in);
+//        System.out.println("1. Welcome");
+//        System.out.println("2. Dyra byra");
+//        System.out.println("3. UFF");
+//        System.out.println("4. Pfu");
 
 
-        do {
-            selection = WelcomeMenu.nextInt();
-
-            if (selection == 1) {
-                System.out.println("1");
-            } else if (selection == 2) {
-                System.out.println("2");
-            } else if (selection == 3) {
-                System.out.println("3");
-            } else {
-                System.out.println("4");
-            }
-        } while (selection != 4);
-        WelcomeMenu.close();
+//        do {
+//            selection = WelcomeMenu.nextInt();
+//
+//            if (selection == 1) {
+//                System.out.println("1");
+//            } else if (selection == 2) {
+//                System.out.println("2");
+//            } else if (selection == 3) {
+//                System.out.println("3");
+//            } else {
+//                System.out.println("4");
+//            }
+//        } while (selection != 4);
+//        WelcomeMenu.close();
     }
 }

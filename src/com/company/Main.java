@@ -8,8 +8,8 @@ public class Main {
 //        Order order1=new Order( );
 //        order1.printOrderInfo();
 //        RestaurantMenu[] menusArray = new RestaurantMenu[1];
-//        Login login = new Login();
-//        login.login();
+        Login login = new Login();
+        login.login();
 
 //        ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
 //        menusReadFromFile = readMenuFromFile( "menu.txt" );
@@ -21,10 +21,10 @@ public class Main {
 
 //        RestaurantMenu menu1=new RestaurantMenu( 28,"drinks","Vodka",3 );
 //
-//        menu1.addRestaurantMenu( "menu.txt", true );
-        Order order1=new Order( );
-
-        order1.createOrder("order1.txt", true);
+////        menu1.addRestaurantMenu( "menu.txt", true );
+//        Order order1=new Order( );
+//
+//        order1.createOrder("order1.txt", true);
 
 
 

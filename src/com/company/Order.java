@@ -209,7 +209,7 @@ public class Order implements OrderInterface {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println("Поръчката е платена! Благодарим, заповядайте отново!");
+        System.out.println("The order is payed! Thanks, welcome back !");
         orderStatus = OrderStatus.PAID;
         tableOfOrder.setFree(true);
     }
@@ -221,7 +221,7 @@ public class Order implements OrderInterface {
 
     @Override
     public void printOrderInfo() throws FileNotFoundException {
-        FileReader ord = new FileReader("order1.txt");
+        FileReader ord = new FileReader("order.txt");
         Scanner fileReader = new Scanner(ord);
 
         int lineNumber = 0;
