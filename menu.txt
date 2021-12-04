@@ -27,3 +27,4 @@
 27|drinks|Fanta|1.6
 28|drink|Kola|4.0
 29|drink|Icetea|2.8
+30|salat|Cezar|6.5
