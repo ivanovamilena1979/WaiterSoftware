@@ -79,6 +79,7 @@ public class Waiter extends Employee {
                 login.login();
 
             }
+
         } while (selection != 5);
         waiterMenu.close();
     }

@@ -236,8 +236,6 @@ public class Order implements OrderInterface {
         }
     }
     public void makeOrder() throws IOException {
-
-
         FileWriter fileWriter = new FileWriter("order1.txt", true);
         PrintWriter out = new PrintWriter(fileWriter);
         Scanner input = new Scanner(System.in);
