@@ -12,7 +12,7 @@ public class Login extends Employee {
             new Waiter("Bil", "bil123")};
 
     public void login() throws IOException {
-        System.out.println("Enter firstName:");
+        System.out.println("Enter userName:");
         String firstName = input.nextLine();
         System.out.println("Enter password:");
         String password = input.nextLine();

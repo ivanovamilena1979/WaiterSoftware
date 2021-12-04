@@ -26,11 +26,11 @@ public class Foods {
 
         public void getInfo() {
             Scanner sc = new Scanner(System.in);
-            System.out.print("Въведи тип: ");
+            System.out.print("Type of food: ");
             foodType = sc.nextLine();
-            System.out.print("Въведи наименование : ");
+            System.out.print("Name of food : ");
             foodName = sc.nextLine();
-            System.out.print("Въведи цена: ");
+            System.out.print("Price: ");
             foodPrice = sc.nextDouble();
         }
     @Override

@@ -30,7 +30,6 @@ public abstract class Employee {
         this.firstName = userName;
     }
 
-
     public void setLastName(String lastName) {
         this.firstName = lastName;
     }

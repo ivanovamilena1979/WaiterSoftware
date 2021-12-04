@@ -106,7 +106,7 @@ public class Order implements OrderInterface {
     @Override
     public void createOrder(String fileName, boolean append) throws IOException {
         ArrayList<Order> orderReadFromFile = new ArrayList<Order>();
-        orderReadFromFile = readOrderFromFile("order1.txt");
+        orderReadFromFile = readOrderFromFile("order.txt");
         System.out.println(orderReadFromFile);
         Scanner scan = new Scanner(System.in);
         char decision;
@@ -167,7 +167,7 @@ public class Order implements OrderInterface {
         File inputFile = new File("order.txt");
         File tempFile = new File("myTempOrder.txt");
 
-        BufferedReader reader = new BufferedReader(new FileReader("order1.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("order.txt"));
         BufferedWriter writer = new BufferedWriter(new FileWriter("tempFileOrder.txt"));
         System.out.println("please enter here product from order for delete: ");
 

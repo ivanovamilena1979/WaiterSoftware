@@ -24,3 +24,5 @@
 24|drink|wine|5.0
 25|drink|water|1.0
 26|drink|Rom|3.0
+27|drinks|Fanta|1.6
+28|drink|Kola|4.0
