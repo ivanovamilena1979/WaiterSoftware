@@ -111,18 +111,18 @@ public class RestaurantMenu implements MenuInterface {
 
     @Override
     public void changeMenu() throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        File inputFile = new File("menu.txt");
-        File tempFile = new File("myTempFile.txt");
+        Scanner scanner = new Scanner( System.in );
+        File inputFile = new File( "menu.txt" );
+        File tempFile = new File( "myTempFile.txt" );
 
-        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-        System.out.println("please enter the number of the line you want to delete: ");
+        BufferedReader reader = new BufferedReader( new FileReader( inputFile ) );
+        BufferedWriter writer = new BufferedWriter( new FileWriter( tempFile ) );
+        System.out.println( "please enter the number of the line you want to delete: " );
 
 
         String lineToRemove = scanner.nextLine();
-        if (lineToRemove.equals("1") || lineToRemove.equals("2")) {
-            lineToRemove = "0".concat(lineToRemove);
+        if (lineToRemove.equals( "1" )||lineToRemove.equals( "2" )){
+            lineToRemove="0".concat( lineToRemove );
         }
 
         //System.out.println( lineToRemove );
@@ -131,21 +131,17 @@ public class RestaurantMenu implements MenuInterface {
         while ((currentLine = reader.readLine()) != null) {
             // trim newline when comparing with lineToRemove
             String trimmedLine = currentLine.trim();
-            if (trimmedLine.contains(lineToRemove)) continue;
-            writer.write(currentLine + System.getProperty("line.separator"));
+            if (trimmedLine.contains( lineToRemove )) continue;
+            writer.write( currentLine + System.getProperty( "line.separator" ) );
 
         }
         reader.close();
         writer.close();
         inputFile.delete();
 
-        boolean successful = tempFile.renameTo(inputFile);
-        System.out.println(successful);
+        boolean successful = tempFile.renameTo( inputFile );
+        System.out.println( successful );
 
     }
-
-//    public static void AddItem(RestaurantMenu ID, List<RestaurantMenu> orderdItems, Order order){
-//        order.addItemsToOrder( ID,orderdItems );
-//    }
 
 }
