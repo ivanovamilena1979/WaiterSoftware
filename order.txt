@@ -3,4 +3,4 @@ Table{number=4, isFree=true}|2021-12-03T19:02:53.146952300|[ApplePie]|3|Prepared
 Table{number=6, isFree=true}|2021-12-03T19:07:21.181671800|[French fries]|1|Ordered
 Table{number=5, isFree=true}|2021-12-03T19:09:31.825827|[Cake]|5|Prepared
 Table{number=2, isFree=true}|2021-12-03T20:01:22.467716500|[Wine]|4|Prepared
-Table{number=1, isFree=true}|2021-12-03T20:30:31.603843300|Kola|2|Ordered
+Table{number=1, isFree=true}|2021-12-03T20:30:31.603843300|[Kola]|2|Ordered
