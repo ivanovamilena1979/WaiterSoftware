@@ -4,13 +4,13 @@ public enum OrderStatus {
     COOKING {
         @Override
         public String toString() {
-            return "Готви се";
+            return "Cooking";
         }
     },
     PREPARED {
         @Override
         public String toString() {
-            return "Приготвена";
+            return "Ready";
         }
 
     },
@@ -18,19 +18,19 @@ public enum OrderStatus {
     PAID {
         @Override
         public String toString() {
-            return "Платена";
+            return "Paid";
         }
     },
     SERVED {
         @Override
         public String toString() {
-            return "Сервирана";
+            return "Served";
         }
     },
     ORDERED {
         @Override
         public String toString() {
-            return "Поръчана";
+            return "Ordered";
         }
     },
 

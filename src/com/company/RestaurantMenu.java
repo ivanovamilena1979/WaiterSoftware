@@ -5,60 +5,44 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class RestaurantMenu implements MenuInterface {
+public class RestaurantMenu extends Table implements MenuInterface {
     private int ID;
     private String productType;
     private String productName;
     private double productPrice;
+    private ArrayList<RestaurantMenu> restaurantMenusItems;
+    Table table1 = new Table();
 
-    public RestaurantMenu(int ID,String productType,String productName,double productPrice){
-        this.ID=ID;
-        this.productType=productType;
-        this.productName=productName;
-        this.productPrice=productPrice;
+    public RestaurantMenu(int ID, String productType, String productName, double productPrice) {
+        this.ID = ID;
+        this.productType = productType;
+        this.productName = productName;
+        this.productPrice = productPrice;
     }
-    public RestaurantMenu(String productName){
-             this.productName=productName;
+
+    public RestaurantMenu(RestaurantMenu restaurantMenu) {
+
+        this.ID = ID;
+        this.productType = productType;
+        this.productName = productName;
+        this.productPrice = productPrice;
+
+
+    }
+    public int getTableNumber(){
+        return table1.getNumber();
+    }
+    public ArrayList<RestaurantMenu> getMenu(){
+        return restaurantMenusItems;
+    }
+
+    public RestaurantMenu(String productName) {
+        this.productName = productName;
     }
 
     public RestaurantMenu() {
 
     }
-
-    public int getID(){
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getProductType(){
-        return productType;
-    }
-
-    public void setProductType(String productType) {
-        this.productType = productType;
-    }
-
-    public String getProductName(){
-        return productName;
-    }
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public double getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
-    }
-    public String toString() {
-        return ( getID() + "  " + getProductType() + "  " + getProductName() + " "+getProductPrice() +"\n" );
-    }
-
 
     public static ArrayList<RestaurantMenu> readMenuFromFile(String fileName) throws FileNotFoundException {
         File file = new File( fileName );
@@ -79,6 +63,42 @@ public class RestaurantMenu implements MenuInterface {
 
         }
         return menuList;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public String toString() {
+        return (getID() + "  " + getProductType() + "  " + getProductName() + " " + getProductPrice() + "\n");
     }
 
     @Override
@@ -118,8 +138,8 @@ public class RestaurantMenu implements MenuInterface {
 
 
         String lineToRemove = scanner.nextLine();
-        if (lineToRemove.equals( "1" )||lineToRemove.equals( "2" )){
-            lineToRemove="0".concat( lineToRemove );
+        if (lineToRemove.equals( "1" ) || lineToRemove.equals( "2" )) {
+            lineToRemove = "0".concat( lineToRemove );
         }
 
         //System.out.println( lineToRemove );
@@ -140,7 +160,9 @@ public class RestaurantMenu implements MenuInterface {
         System.out.println( successful );
 
     }
-
+    public int getMenuSize(){
+        return restaurantMenusItems.size();
+    }
 //    public static void AddItem(RestaurantMenu ID, List<RestaurantMenu> orderdItems, Order order){
 //        order.addItemsToOrder( ID,orderdItems );
 //    }
