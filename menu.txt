@@ -1,0 +1,21 @@
+1|starter|Mozarella sticks|4.5
+2|starter|Onion rings|3.8
+20|starter|French fries|2.5
+4|starter|Chili_Fries|3.0
+5|soup|chiken soup|2.8
+10|salad|Shopska|5.5
+11|fastfood|Pizza|7.5
+12|fastfood|Burger|5.0
+13|dessert|Ice cream|3.5
+14|dessert|ApplePie|3.5
+15|dessert|Pancake|3.0
+17|dessert|Panakota|3.5
+18|drinks|Milk shake|3.5
+19|drinks|Coffee|1.8
+21|drinks|hot chocolate|4.5
+22|drinks|whiskey|5.4
+23|drinks|milk|3.2
+27|drinks|Jin|5.5
+28|drinks|red wine|3.5
+29|dessert|watermelon|2.5
+30|drinks|water|1.5

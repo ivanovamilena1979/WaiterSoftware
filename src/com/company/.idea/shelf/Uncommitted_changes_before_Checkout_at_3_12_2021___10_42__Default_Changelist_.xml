@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_3_12_2021_г__10_42_[Default_Changelist]" date="1638520977788" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_12_2021_г__10_42_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 3.12.2021 г. 10:42 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/company/company/Main.class" />
+    <option name="AFTER_PATH" value="out/production/company/company/Main.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_12_2021_г__10_42_[Default_Changelist]/Main.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/company/company/RestaurantMenu.class" />
+    <option name="AFTER_PATH" value="out/production/company/company/RestaurantMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_12_2021_г__10_42_[Default_Changelist]/RestaurantMenu.class" />
+  </binary>
+</changelist>

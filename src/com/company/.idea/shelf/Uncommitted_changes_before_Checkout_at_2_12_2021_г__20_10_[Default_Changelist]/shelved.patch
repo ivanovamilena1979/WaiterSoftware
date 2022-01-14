@@ -1,0 +1,266 @@
+Index: Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main.java b/company/Main.java
+rename from Main.java
+rename to company/Main.java
+--- a/Main.java	(revision 46d0b0b7990ca01d38ca4ac54af0c1b2c64d36a9)
++++ b/company/Main.java	(date 1638465932970)
+@@ -1,17 +1,36 @@
+ package company;
+ 
+ import java.io.IOException;
++import java.util.ArrayList;
++import java.util.Scanner;
++
++import static company.RestaurantMenu.readMenuFromFile;
+ 
+ public class Main {
+ 
+     public static void main(String[] args) throws IOException {
+-       //Login login = new Login();
+-      //login.login();
+-//        RestaurantMenu menu = new RestaurantMenu();
+-//        menu.addRestaurantMenu();
+-        Order order = new Order();
+-        order.makeOrder();
+-        order.printOrderInfo();
+-        //menu.addFoodMenu();
++        //RestaurantMenu[] menusArray = new RestaurantMenu[1];
++        //Login login = new Login();
++        //login.login();
++
++        ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
++        menusReadFromFile = readMenuFromFile( "menu.txt" );
++        System.out.println( menusReadFromFile );
++
++        Scanner scan = new Scanner( System.in );
++        System.out.println( "Enter the product type: " );
++        String productTypeToAdd = scan.nextLine();
++        System.out.println( "Enter the product name: " );
++        String productNameToAdd = scan.nextLine();
++        System.out.println( "Enter the product price: " );
++        double productPriceToAdd = scan.nextDouble();
++        RestaurantMenu menu1 = new RestaurantMenu( (menusReadFromFile.size() + 1), productTypeToAdd, productNameToAdd, productPriceToAdd );
++        RestaurantMenu[] menusArray = new RestaurantMenu[1];
++        menusArray[0] = menu1;
++
++        String outputText = menusArray[0].getID() + "|" + menusArray[0].getProductType() + "|" +
++                menusArray[0].getProductName() + "|" + menusArray[0].getProductPrice();
++        menu1.addRestaurantMenu( "menu.txt", outputText, true );
+     }
+ }
++
+Index: RestaurantMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/RestaurantMenu.java b/company/RestaurantMenu.java
+rename from RestaurantMenu.java
+rename to company/RestaurantMenu.java
+--- a/RestaurantMenu.java	(revision 46d0b0b7990ca01d38ca4ac54af0c1b2c64d36a9)
++++ b/company/RestaurantMenu.java	(date 1638465255726)
+@@ -1,72 +1,84 @@
+ package company;
+ 
+ import java.io.*;
++import java.util.ArrayList;
+ import java.util.Scanner;
+ 
+ public class RestaurantMenu implements MenuInterface {
+-    private int itemNumber;
++    private int ID;
+     private String productType;
+     private String productName;
+     private double productPrice;
+ 
++    public RestaurantMenu(int ID,String productType,String productName,double productPrice){
++        this.ID=ID;
++        this.productType=productType;
++        this.productName=productName;
++        this.productPrice=productPrice;
++    }
++    public int getID(){
++        return ID;
++    }
+ 
+-//    public Menu(String foodType, String foodName, double foodPrice) {
+-//        this.foodType = foodType;
+-//        this.foodPrice = foodPrice;
+-//        this.foodName = foodName;
+-//    }
++    public void setID(int ID) {
++        this.ID = ID;
++    }
+ 
+-    public String getproductType() {
++    public String getProductType(){
+         return productType;
+     }
+ 
+-    public String getproductName() {
++    public void setProductType(String productType) {
++        this.productType = productType;
++    }
++
++    public String getProductName(){
+         return productName;
+     }
++    public void setProductName(String productName) {
++        this.productName = productName;
++    }
+ 
+-    public double getproductPrice() {
++    public double getProductPrice() {
+         return productPrice;
+     }
+ 
+-
+-    @Override
++    public void setProductPrice(double productPrice) {
++        this.productPrice = productPrice;
++    }
+     public String toString() {
+-        return String.format( getproductName() + "  " + getproductType() + "  price: " + getproductPrice() + "\n" );
++        return ( getID() + "  " + getProductType() + "  " + getProductName() + " "+getProductPrice() +"\n" );
++    }
++
++
++    public static ArrayList<RestaurantMenu> readMenuFromFile(String fileName) throws FileNotFoundException {
++        File file = new File( fileName );
++        Scanner s = new Scanner( file );
++        ArrayList<RestaurantMenu> menuList = new ArrayList<RestaurantMenu>();
++        while (s.hasNextLine()) {
++
++            String line = s.nextLine();
++            String[] items = line.split( "\\|" );
++
++            int ID = Integer.parseInt( items[0] );
++            String productType = items[1];
++            String productName = items[2];
++            double productPrice = Double.parseDouble( items[3] );
++
++            RestaurantMenu newMenu = new RestaurantMenu( ID, productType, productName, productPrice );
++            menuList.add( newMenu );
++
++        }
++        return menuList;
+     }
+ 
+     @Override
+-    public void readMenu() throws IOException {
+-        FileReader fin = new FileReader( "menu1.txt" );
+-        Scanner fileReader = new Scanner( fin );
+-
+-        int lineNumber = 0;
+-        while (fileReader.hasNext()) {
+-            lineNumber++;
+-            if (lineNumber % 2 != 0) {
+-                System.out.println( fileReader.nextLine() );
+-            } else {
+-                System.out.println( fileReader.nextLine() );
+-            }
+-        }
+-    }
+-
+-    @Override
+-    public void addRestaurantMenu() throws IOException {
+-        FileWriter fileWriter = new FileWriter( "menu1.txt", true );
+-        PrintWriter out = new PrintWriter( fileWriter );
+-        Scanner input = new Scanner( System.in );
+-        System.out.println( "Enter the type of the product (starter, salad,dessert or drink): " );
+-        try {
+-            String productType = input.nextLine();
+-            System.out.println( "The name of the item: " );
+-            String productName = input.nextLine();
+-            System.out.println( "Enter the price of the item: " );
+-            double productPrice = input.nextDouble();
+-            out.println( "Product type: " + productType + " Product name: " + productName + " Price " + productPrice );
+-            out.close();
+-        } catch (Exception e) {
+-            System.out.println( "Wrong input!" );
+-        }
++    public void addRestaurantMenu(String fileName, String text, boolean append) throws IOException {
++        File file = new File( "menu.txt" );
++        FileWriter fw = new FileWriter( file, append );
++        PrintWriter pw = new PrintWriter( fw );
++        pw.println( text );
++        pw.close();
+     }
+ 
+     @Override
+Index: MenuInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MenuInterface.java b/company/MenuInterface.java
+rename from MenuInterface.java
+rename to company/MenuInterface.java
+--- a/MenuInterface.java	(revision 46d0b0b7990ca01d38ca4ac54af0c1b2c64d36a9)
++++ b/company/MenuInterface.java	(date 1638457040169)
+@@ -1,9 +1,13 @@
+ package company;
+ 
++import java.io.FileNotFoundException;
+ import java.io.IOException;
++import java.util.ArrayList;
+ 
+ public interface MenuInterface {
+-    void readMenu()throws IOException;
+-    void addRestaurantMenu()throws IOException;
++
++
++    void addRestaurantMenu(String fileName, String text, boolean append) throws IOException;
++
+     void changeMenu()throws IOException;
+ }
+Index: Login.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Login.java b/company/Login.java
+rename from Login.java
+rename to company/Login.java
+--- a/Login.java	(revision 46d0b0b7990ca01d38ca4ac54af0c1b2c64d36a9)
++++ b/company/Login.java	(date 1638444786641)
+@@ -5,10 +5,10 @@
+ public class Login extends Employee {
+     Scanner input = new Scanner(System.in);
+ 
+-    Employee[] employees = {new Chef("Bob", "myPassword"),
+-            new Chef("Sue", "123Seven"),
+-            new Waiter("Jenny",  "hardPassword"),
+-            new Waiter("Bil","pifiaoanaei")};
++    Employee[] employees = {new Chef("Bobi", "myPassword"),
++            new Chef("Pena", "123Seven"),
++            new Waiter("Ani",  "hardPassword"),
++            new Waiter("Bil","987Bil")};
+ 
+     public void login() {
+         System.out.println("Enter firstName:");
+diff --git a/Employee.java b/company/Employee.java
+rename from Employee.java
+rename to company/Employee.java
+diff --git a/Foods.java b/company/Foods.java
+rename from Foods.java
+rename to company/Foods.java
+diff --git a/Chef.java b/company/Chef.java
+rename from Chef.java
+rename to company/Chef.java
+diff --git a/Table.java b/company/Table.java
+rename from Table.java
+rename to company/Table.java
+diff --git a/Waiter.java b/company/Waiter.java
+rename from Waiter.java
+rename to company/Waiter.java
+diff --git a/Order.java b/company/Order.java
+rename from Order.java
+rename to company/Order.java
+diff --git a/OrderInterface.java b/company/OrderInterface.java
+rename from OrderInterface.java
+rename to company/OrderInterface.java
