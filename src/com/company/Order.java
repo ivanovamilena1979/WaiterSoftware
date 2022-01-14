@@ -125,17 +125,6 @@ public class Order implements OrderInterface {
         return table;
     }
 
-//    Collection<RestaurantMenu> getMenuItems() {
-//        return orderedFood;
-//    }
-
-    //    public Order(LocalDateTime currentTime, ArrayList<RestaurantMenu> orderedFood, OrderStatus orderStatus) {
-//
-//       this.currentTime = LocalDateTime.now();
-//
-//       this.orderedFood = orderedFood;
-//       this.orderStatus = orderStatus;
-//   }
     public void MilenaMakeOrder(String fileName, boolean append) throws IOException {
 
         ArrayList<RestaurantMenu> menusReadFromFile = new ArrayList<RestaurantMenu>();
@@ -151,7 +140,7 @@ public class Order implements OrderInterface {
                 Order order1 = new Order( menusReadFromFile.get( i ).getProductName(), menusReadFromFile.get( i ).getProductPrice() );;
                 ordersArray[0] = order1;
                 String outputText = ordersArray[0].orderedProduct + "|" + ordersArray[0].price + "|" + ordersArray[0].getCurrentTime() + "|" + ordersArray[0].orderStatus;
-                File file = new File( "order.txt" );
+                File file = new File( fileName );
                 FileWriter fw = new FileWriter( file, append );
                 PrintWriter pw = new PrintWriter( fw );
                 pw.println( outputText );
@@ -231,7 +220,38 @@ public class Order implements OrderInterface {
 
         }
     }
+    public void changeMenu() throws IOException {
+        Scanner scanner = new Scanner( System.in );
+        File inputFile = new File( "menu.txt" );
+        File tempFile = new File( "myTempFile.txt" );
 
+        BufferedReader reader = new BufferedReader( new FileReader( inputFile ) );
+        BufferedWriter writer = new BufferedWriter( new FileWriter( tempFile ) );
+        System.out.println( "please enter the number of the line you want to delete: " );
+
+
+        String lineToRemove = scanner.nextLine();
+        if (lineToRemove.equals( "1" ) || lineToRemove.equals( "2" )) {
+            lineToRemove = "0".concat( lineToRemove );
+        }
+
+        String currentLine;
+
+        while ((currentLine = reader.readLine()) != null) {
+            // trim newline when comparing with lineToRemove
+            String trimmedLine = currentLine.trim();
+            if (trimmedLine.contains( lineToRemove )) continue;
+            writer.write( currentLine + System.getProperty( "line.separator" ) );
+
+        }
+        reader.close();
+        writer.close();
+        inputFile.delete();
+
+        boolean successful = tempFile.renameTo( inputFile );
+        System.out.println( successful );
+
+    }
     @Override
     public String toString() {
         return  this.orderNumber+" "+this.orderStatus+" "+getCurrentTime() + " " + this.orderedProduct + "  " + this.price + "\n";
