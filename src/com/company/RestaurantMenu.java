@@ -3,14 +3,14 @@ package com.company;
 import java.io.*;
 import java.util.*;
 
-public class RestaurantMenu implements MenuInterface, Comparable {
+public class RestaurantMenu implements MenuInterface {
     private int id;
     private String productType;
     private String productName;
     private double productPrice;
 
-    public RestaurantMenu(int ID, String productType, String productName, double productPrice) {
-        this.id = ID;
+    public RestaurantMenu(int id, String productType, String productName, double productPrice) {
+        this.id = id;
         this.productType = productType;
         this.productName = productName;
         this.productPrice = productPrice;
@@ -118,8 +118,4 @@ public class RestaurantMenu implements MenuInterface, Comparable {
 
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
 }
